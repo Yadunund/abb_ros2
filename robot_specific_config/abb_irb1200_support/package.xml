@@ -51,6 +51,8 @@
   <exec_depend>rviz2</exec_depend>
   <exec_depend>joint_state_publisher_gui</exec_depend>
   <exec_depend>robot_state_publisher</exec_depend>
+  <exec_depend>abb_resources</exec_depend>
+
   <exec_depend>launch_ros</exec_depend>
 
   <export>
