@@ -10,6 +10,7 @@ from launch.substitutions import (
 )
 from launch_ros.actions import Node
 from launch_ros.substitutions import FindPackageShare
+from launch_ros.descriptions import ParameterValue
 import os
 import yaml
 
@@ -42,7 +43,7 @@ def launch_setup(context, *args, **kwargs):
             ),
         ]
     )
-    robot_description = {"robot_description": robot_description_content}
+    robot_description = {"robot_description": ParameterValue(robot_description_content, value_type=str)}
 
     robot_description_semantic_content = Command(
         [
@@ -166,28 +167,28 @@ def generate_launch_description():
         DeclareLaunchArgument(
             "robot_xacro_file",
             description="Xacro describing the robot.",
-            choices=["irb1200_5_90.xacro"],
+            # choices=["irb1200_5_90.xacro"],
         )
     )
     declared_arguments.append(
         DeclareLaunchArgument(
             "support_package",
             description="Name of the support package",
-            choices=["abb_irb1200_support"],
+            # choices=["abb_irb1200_support"],
         )
     )
     declared_arguments.append(
         DeclareLaunchArgument(
             "moveit_config_package",
             description="Name of the support package",
-            choices=["abb_irb1200_5_90_moveit_config"],
+            # choices=["abb_irb1200_5_90_moveit_config"],
         )
     )
     declared_arguments.append(
         DeclareLaunchArgument(
             "moveit_config_file",
             description="Name of the SRDF file",
-            choices=["abb_irb1200_5_90.srdf.xacro"],
+            # choices=["abb_irb1200_5_90.srdf.xacro"],
         )
     )
 
