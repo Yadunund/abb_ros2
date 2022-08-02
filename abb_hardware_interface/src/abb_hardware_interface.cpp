@@ -116,7 +116,7 @@ CallbackReturn ABBSystemPositionOnlyHardware::on_init(const hardware_interface::
           abb::robot::EGMManager::ChannelConfiguration{ static_cast<uint16_t>(egm_port), group };
       channel_configurations.emplace_back(channel_configuration);
       RCLCPP_INFO_STREAM(LOGGER,
-                         "Configuring EGM for mechanical unit group " << group.name() << " on port " << egm_port);
+                         "Configuring EGM for mechanical unit group " << group.name().c_str() << " on port " << egm_port);
     }
     catch (std::invalid_argument& e)
     {
