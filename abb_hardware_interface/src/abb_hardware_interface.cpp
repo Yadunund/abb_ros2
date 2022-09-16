@@ -84,7 +84,7 @@ CallbackReturn ABBSystemPositionOnlyHardware::on_init(const hardware_interface::
   // std::string robot_controller_id{""};
   // Add joints to robot.
   // auto id{robot_controller_id.empty() ? "" : robot_controller_id + "_"};
-  auto joint_name{"rob1_"};
+  auto joint_name{"joint_"};
   SetJoint(robot->add_standardized_joints(), joint_name + std::to_string(1), -180.0, 180.0);
   SetJoint(robot->add_standardized_joints(), joint_name + std::to_string(2), -95.0, 155.0);
   SetJoint(robot->add_standardized_joints(), joint_name + std::to_string(3), -210.0, 65.0);
