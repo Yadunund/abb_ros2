@@ -16,6 +16,8 @@
 #include <abb_hardware_interface/abb_hardware_interface.hpp>
 #include <abb_hardware_interface/utilities.hpp>
 
+#include <iostream>
+
 using namespace std::chrono_literals;
 
 namespace abb_hardware_interface
@@ -40,9 +42,57 @@ CallbackReturn ABBSystemPositionOnlyHardware::on_init(const hardware_interface::
   }
 
   // Get robot controller description from RWS
-  abb::robot::RWSManager rws_manager(rws_ip, rws_port, "Default User", "robotics");
-  const auto robot_controller_description_ =
-      abb::robot::utilities::establishRWSConnection(rws_manager, "IRB1200", true);
+  // abb::robot::RWSManager rws_manager(rws_ip, rws_port, "Default User", "robotics");
+  // const auto robot_controller_description_ =
+  //     abb::robot::utilities::establishRWSConnection(rws_manager, "IRB1200", true);
+
+  // Description of ABB robot controller.
+  abb::robot::RobotControllerDescription description{};
+
+  auto SetJoint = [](
+    abb::robot::StandardizedJoint* p_joint,
+    const std::string name,
+    const double lower_bound,
+    const double upper_bound)
+  {
+    p_joint->set_standardized_name(name);
+    p_joint->set_rotating_move(true);
+    p_joint->set_lower_joint_bound(M_PI * (lower_bound) / 180.0);
+    p_joint->set_upper_joint_bound(M_PI * (upper_bound) / 180.0);
+  };
+
+  // Add header.
+  auto header{description.mutable_header()};
+  header->mutable_robot_ware_version()->set_major_number(7);
+  header->mutable_robot_ware_version()->set_minor_number(3);
+  header->mutable_robot_ware_version()->set_patch_number(2);
+
+  // Add system indicators.
+  auto system_indicators{description.mutable_system_indicators()};
+  system_indicators->mutable_options()->set_egm(true);
+
+  // Add single mechanical units group.
+  auto mug{description.add_mechanical_units_groups()};
+  mug->set_name("");
+
+  // Add single robot to mechanical units group.
+  auto robot{mug->mutable_robot()};
+  robot->set_type(abb::robot::MechanicalUnit_Type_TCP_ROBOT);
+  robot->set_axes_total(6);
+  robot->set_mode(abb::robot::MechanicalUnit_Mode_ACTIVATED);
+
+  // std::string robot_controller_id{""};
+  // Add joints to robot.
+  // auto id{robot_controller_id.empty() ? "" : robot_controller_id + "_"};
+  auto joint_name{"rob1_"};
+  SetJoint(robot->add_standardized_joints(), joint_name + std::to_string(1), -180.0, 180.0);
+  SetJoint(robot->add_standardized_joints(), joint_name + std::to_string(2), -95.0, 155.0);
+  SetJoint(robot->add_standardized_joints(), joint_name + std::to_string(3), -210.0, 65.0);
+  SetJoint(robot->add_standardized_joints(), joint_name + std::to_string(4), -230.0, 230.0);
+  SetJoint(robot->add_standardized_joints(), joint_name + std::to_string(5), -130.0, 130.0);
+  SetJoint(robot->add_standardized_joints(), joint_name + std::to_string(6), -400.0, 400.0);
+
+  robot_controller_description_ = std::move(description);
   RCLCPP_INFO_STREAM(LOGGER, "Robot controller description:\n"
                                  << abb::robot::summaryText(robot_controller_description_));
 
@@ -140,6 +190,8 @@ CallbackReturn ABBSystemPositionOnlyHardware::on_init(const hardware_interface::
 
 std::vector<hardware_interface::StateInterface> ABBSystemPositionOnlyHardware::export_state_interfaces()
 {
+  std::cout << "[export state]" << std::endl;
+
   std::vector<hardware_interface::StateInterface> state_interfaces;
   for (auto& group : motion_data_.groups)
   {
@@ -147,10 +199,12 @@ std::vector<hardware_interface::StateInterface> ABBSystemPositionOnlyHardware::e
     {
       for (auto& joint : unit.joints)
       {
+        std::cout << "[export state]" <<  joint.name << std::endl;
         // TODO(seng): Consider changing joint names in robot description to match what comes
         // from the ABB robot description to avoid needing to strip the prefix here
-        const auto pos = joint.name.find("joint");
-        const auto joint_name = joint.name.substr(pos);
+        // const auto pos = joint.name.find("joint");
+        // const auto joint_name = joint.name.substr(pos);
+        const auto& joint_name = joint.name;
         state_interfaces.emplace_back(
             hardware_interface::StateInterface(joint_name, hardware_interface::HW_IF_POSITION, &joint.state.position));
         state_interfaces.emplace_back(
@@ -163,17 +217,22 @@ std::vector<hardware_interface::StateInterface> ABBSystemPositionOnlyHardware::e
 
 std::vector<hardware_interface::CommandInterface> ABBSystemPositionOnlyHardware::export_command_interfaces()
 {
+    std::cout << "[export command] has " << motion_data_.groups.size() << " groups" << std::endl;
+
   std::vector<hardware_interface::CommandInterface> command_interfaces;
   for (auto& group : motion_data_.groups)
   {
+    std::cout <<"Group name: " << group.name << "has " << group.units.size() << " units" << std::endl;
     for (auto& unit : group.units)
     {
+      std::cout << "unit name " << unit.name << " has " << unit.joints.size() << " joint" << std::endl;
       for (auto& joint : unit.joints)
       {
         // TODO(seng): Consider changing joint names in robot description to match what comes
         // from the ABB robot description to avoid needing to strip the prefix here
-        const auto pos = joint.name.find("joint");
-        const auto joint_name = joint.name.substr(pos);
+        // const auto pos = joint.name.find("joint");
+        // const auto joint_name = joint.name.substr(pos);
+        const auto& joint_name = joint.name;
         command_interfaces.emplace_back(hardware_interface::CommandInterface(
             joint_name, hardware_interface::HW_IF_POSITION, &joint.command.position));
         command_interfaces.emplace_back(hardware_interface::CommandInterface(
