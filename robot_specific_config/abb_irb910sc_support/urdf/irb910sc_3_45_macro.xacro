@@ -1,0 +1,156 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+  <xacro:include filename="$(find abb_resources)/urdf/common_materials.xacro"/>
+
+  <xacro:macro name="abb_irb910sc_3_45" params="prefix">
+    <!-- link list -->
+    <link name="${prefix}base_link">
+      <!-- <inertial>
+        <mass value="13.7742"/>
+        <origin xyz="-0.028986 0.000596 0.11273"/>
+        <inertia ixx="0.101998" ixy="0.000495482" ixz="0.000311158" iyy="0.13969" iyz="-0.000245375" izz="0.130433"/>
+      </inertial> -->
+      <visual name="visual">
+        <geometry>
+          <mesh filename="package://abb_irb910sc_support/meshes/irb910sc_3_45/visual/base_link.stl"/>
+        </geometry>
+        <xacro:material_abb_white />
+      </visual>
+      <collision>
+        <geometry>
+          <mesh filename="package://abb_irb910sc_support/meshes/irb910sc_3_45/collision/base_link.stl"/>
+        </geometry>
+        <xacro:material_abb_yellow />
+      </collision>
+    </link>
+    <link name="${prefix}link_1">
+      <!-- <inertial>
+        <mass value="11.8419"/>
+        <origin xyz="0.000877 -0.000631 -0.062883"/>
+        <inertia ixx="0.11194" ixy="-4.54988e-05" ixz="0.000280961" iyy="0.0915159" iyz="-0.000109905" izz="0.0876456"/>
+      </inertial> -->
+      <visual>
+        <geometry>
+          <mesh filename="package://abb_irb910sc_support/meshes/irb910sc_3_45/visual/link_1.stl"/>
+        </geometry>
+        <xacro:material_abb_white />
+      </visual>
+      <collision>
+        <geometry>
+          <mesh filename="package://abb_irb910sc_support/meshes/irb910sc_3_45/collision/link_1.stl"/>
+        </geometry>
+        <xacro:material_abb_yellow />
+      </collision>
+    </link>
+    <link name="${prefix}link_2">
+      <visual>
+        <geometry>
+          <mesh filename="package://abb_irb910sc_support/meshes/irb910sc_3_45/visual/link_2.stl"/>
+        </geometry>
+        <xacro:material_abb_white />
+      </visual>
+      <collision>
+        <geometry>
+          <mesh filename="package://abb_irb910sc_support/meshes/irb910sc_3_45/collision/link_2.stl"/>
+        </geometry>
+        <xacro:material_abb_yellow />
+      </collision>
+    </link>
+    <link name="${prefix}link_3">
+      <visual>
+        <geometry>
+          <mesh filename="package://abb_irb910sc_support/meshes/irb910sc_3_45/visual/link_3.stl"/>
+        </geometry>
+        <xacro:material_abb_white />
+      </visual>
+      <collision>
+        <geometry>
+          <mesh filename="package://abb_irb910sc_support/meshes/irb910sc_3_45/collision/link_3.stl"/>
+        </geometry>
+        <xacro:material_abb_yellow />
+      </collision>
+    </link>
+    <link name="${prefix}link_4">
+      <visual>
+        <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+        <geometry>
+           <cylinder radius="0.01" length="0.001" />
+        </geometry>
+        <xacro:material_abb_white />
+      </visual>
+      <collision>
+        <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+        <geometry>
+           <cylinder radius="0.01" length="0.001" />
+        </geometry>
+        <xacro:material_abb_yellow />
+      </collision>
+      <inertial>
+        <mass value="0.0001"/>
+        <inertia ixx="1e-08" ixy="0" ixz="0" iyy="1e-08" iyz="0" izz="1e-08"/>
+      </inertial>
+    </link>
+    <!-- end of link list -->
+
+    <!-- joint list -->
+    <joint name="${prefix}joint_1" type="revolute">
+      <origin xyz="0 0 0.1947" rpy="0 0 0"/>
+      <parent link="${prefix}base_link"/>
+      <child link="${prefix}link_1"/>
+      <axis xyz="0 0 1"/>
+      <limit lower="${radians(-140)}" upper="${radians(140)}" effort="1000" velocity="${radians(415)}"/>
+      <dynamics damping="10.0" friction="1.0"/>
+    </joint>
+    <joint name="${prefix}joint_2" type="revolute">
+      <origin xyz="0.200123 0 0.068" rpy="0 0 0"/>
+      <parent link="${prefix}link_1"/>
+      <child link="${prefix}link_2"/>
+      <axis xyz="0 0 1"/>
+      <!-- Note: Original limits are [-150, 150] -->
+      <limit lower="${radians(-150)}" upper="${radians(0)}" effort="1000" velocity="${radians(659)}"/>
+      <dynamics damping="2.0" friction="1.0"/>
+    </joint>
+    <joint name="${prefix}joint_3" type="prismatic">
+      <origin xyz="0.250 0 0.358185" rpy="0 0 0"/>
+      <parent link="${prefix}link_2"/>
+      <child link="${prefix}link_3"/>
+      <axis xyz="0 0 1"/>
+      <limit lower="-0.18" upper="0.0" effort="1000" velocity="1.0"/>
+      <dynamics damping="2.0" friction="1.0"/>
+    </joint>
+    <joint name="${prefix}joint_4" type="revolute">
+      <origin xyz="0 0 -0.4" rpy="${radians(180)} 0 ${radians(180)}"/>
+      <parent link="${prefix}link_3"/>
+      <child link="${prefix}link_4"/>
+      <axis xyz="0 0 1"/>
+      <!-- Note: Original limits are [-400, 400] -->
+      <limit lower="${radians(-180)}" upper="${radians(180)}" effort="1000" velocity="${radians(2400)}"/>
+      <dynamics damping="2.0" friction="1.0"/>
+    </joint>
+    <!-- end of joint list -->
+
+    <!-- ROS-Industrial 'base' frame: base_link to ABB World Coordinates transform -->
+    <link name="${prefix}base" />
+    <joint name="${prefix}base_link-base" type="fixed">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <parent link="${prefix}base_link"/>
+      <child link="${prefix}base"/>
+    </joint>
+
+    <!-- ROS-Industrial 'flange' frame: attachment point for EEF models -->
+    <link name="${prefix}flange"/>
+    <joint type="fixed" name="${prefix}joint_4-flange">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <parent link="${prefix}link_4"/>
+      <child link="${prefix}flange"/>
+    </joint>
+
+    <!-- ROS-Industrial 'tool0' frame: all-zeros tool frame -->
+    <link name="${prefix}tool0" />
+    <joint name="${prefix}link_4-tool0" type="fixed">
+      <origin xyz="0 0 0" rpy="${radians(0)} 0 0" />
+      <parent link="${prefix}flange" />
+      <child link="${prefix}tool0" />
+    </joint>
+  </xacro:macro>
+</robot>

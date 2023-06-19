@@ -1,0 +1,25 @@
+moveit_setup_assistant_config:
+  urdf:
+    package: abb_irb1300_support
+    relative_path: urdf/irb1300_10_115.xacro
+  srdf:
+    relative_path: config/abb_irb1300_10_115.srdf
+  package_settings:
+    author_name: Yadunund
+    author_email: yadunund@openrobotics.org
+    generated_timestamp: 1659350135
+  control_xacro:
+    command:
+      - position
+    state:
+      - position
+      - velocity
+  modified_urdf:
+    xacros:
+      - control_xacro
+  control_xacro:
+    command:
+      - position
+    state:
+      - position
+      - velocity
