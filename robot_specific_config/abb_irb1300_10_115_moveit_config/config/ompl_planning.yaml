@@ -159,7 +159,7 @@ planner_configs:
     num_planners: 4  # The number of default planners to use for planning
     planners: "LazyPRMstar,LazyPRM,RRT,RRTConnect"  # A comma-separated list of planner types (e.g., "PRM,EST,RRTConnect"Optionally, planner parameters can be passed to change the default:"PRM[max_nearest_neighbors=5],EST[goal_bias=.5],RRT[range=10. goal_bias=.1]"
 manipulator:
-  default_planner_config: AnytimePathShortening
+  default_planner_config: RRTConnectkConfigDefault
   planner_configs:
     - SBLkConfigDefault
     - ESTkConfigDefault
