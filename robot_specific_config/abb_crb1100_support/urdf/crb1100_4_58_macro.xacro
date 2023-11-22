@@ -158,37 +158,37 @@
         <xacro:material_abb_white />
       </visual>
       <collision name="Link4_Cylinder008">
-        <pose>0.15523 0.0 0.617 1.5708 0.0 1.5708</pose>
+        <origin xyz="0.08173 0.0 0.0" rpy="1.5708 0.0 1.5708"/>
         <geometry>
             <cylinder length="0.163185" radius="0.0452081"/>
         </geometry>
       </collision>
       <collision name="Link4_Cylinder009">
-        <pose>0.3 0.0 0.617 1.5708 0.0 -1.74846e-07</pose>
+        <origin xyz="0.2265 0.0 0.0" rpy="1.5708 0.0 -1.74846e-07"/>
         <geometry>
             <cylinder length="0.102" radius="0.038"/>
         </geometry>
       </collision>
       <collision name="Link4_Cylinder010">
-        <pose>0.179 0.0 0.617 1.5708 0.0 -1.74846e-07</pose>
+        <origin xyz="0.1055 0.0 0.0" rpy="1.5708 0.0 -1.74846e-07"/>
         <geometry>
             <cylinder length="0.102" radius="0.038"/>
         </geometry>
       </collision>
       <collision name="Link4_Box012">
-        <pose>0.239561 0.0 0.617 0.0 0.0 0.0</pose>
+        <origin xyz="0.166 0.0 0.0" rpy="0.0 0.0 0.0"/>
         <geometry>
           <box size="0.12 0.102032 0.076"/>
         </geometry>
       </collision>
       <collision name="Link4_Box013">
-        <pose>0.154738 0.0 0.649546 0.0 -0.436332 0.0</pose>
+        <origin xyz="0.0812 0.0 0.032546" rpy="0.0 -0.436332 0.0"/>
         <geometry>
           <box size="0.0893911 0.0609485 0.0468981"/>
         </geometry>
       </collision>
       <collision name="Link4_Box014">
-        <pose>0.203204 0.0 0.647963 0.0 0.0 0.0</pose>
+        <origin xyz="0.1297 0.0 0.030963" rpy="0.0 0.0 0.0"/>
         <geometry>
           <box size="0.0339686 0.060339 0.0468981"/>
         </geometry>
@@ -204,7 +204,7 @@
         <xacro:material_abb_white />
       </visual>
       <collision name="Link4_Cylinder011">
-        <pose>0.324441 0.0 0.617 1.5708 0.0 -1.5708</pose>
+        <origin xyz="0.324441 0.0 0.617" rpy="1.5708 0.0 -1.5708"/>
         <geometry>
             <cylinder length="0.0780414" radius="0.0353863"/>
         </geometry>
@@ -254,10 +254,10 @@
       <dynamics damping="2.0" friction="1.0"/>
     </joint>
     <joint name="${prefix}joint_4" type="revolute">
-      <origin xyz="0 0 0" rpy="${radians(180)} 0 ${radians(180)}"/>
+      <origin xyz="0.0725 0 0.01" rpy="0 0 0"/>
       <parent link="${prefix}link_3"/>
       <child link="${prefix}link_4"/>
-      <axis xyz="0 0 1"/>
+      <axis xyz="1 0 0"/>
       <!-- Note: Original limits are [-400, 400] -->
       <limit lower="${radians(-230)}" upper="${radians(230)}" effort="1000" velocity="${radians(560)}"/>
       <dynamics damping="2.0" friction="1.0"/>
