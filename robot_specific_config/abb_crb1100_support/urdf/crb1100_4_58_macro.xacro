@@ -195,7 +195,6 @@
         <xacro:material_abb_yellow />
       </collision>
     </link>
-    <!--
     <link name="${prefix}link_5">
       <visual name="link_5">
         <geometry>
@@ -204,13 +203,14 @@
         <xacro:material_abb_white />
       </visual>
       <collision name="Link4_Cylinder011">
-        <origin xyz="0.324441 0.0 0.617" rpy="1.5708 0.0 -1.5708"/>
+        <origin xyz="0.024441 0.0 0.0" rpy="1.5708 0.0 -1.5708"/>
         <geometry>
             <cylinder length="0.0780414" radius="0.0353863"/>
         </geometry>
         <xacro:material_abb_yellow />
       </collision>
     </link>
+    <!--
     <link name="${prefix}link_6">
       <visual name="link_6">
         <geometry>
@@ -262,15 +262,15 @@
       <limit lower="${radians(-230)}" upper="${radians(230)}" effort="1000" velocity="${radians(560)}"/>
       <dynamics damping="2.0" friction="1.0"/>
     </joint>
-    <!--
     <joint name="${prefix}joint_5" type="revolute">
-      <origin xyz="0 0 0" rpy="${radians(180)} 0 ${radians(180)}"/>
+      <origin xyz="0.2265 0 0" rpy="0 0 0"/>
       <parent link="${prefix}link_4"/>
       <child link="${prefix}link_5"/>
-      <axis xyz="0 0 1"/>
+      <axis xyz="0 1 0"/>
       <limit lower="${radians(-125)}" upper="${radians(120)}" effort="1000" velocity="${radians(420)}"/>
       <dynamics damping="2.0" friction="1.0"/>
     </joint>
+    <!--
     <joint name="${prefix}joint_6" type="revolute">
       <origin xyz="0 0 0" rpy="${radians(180)} 0 ${radians(180)}"/>
       <parent link="${prefix}link_5"/>
