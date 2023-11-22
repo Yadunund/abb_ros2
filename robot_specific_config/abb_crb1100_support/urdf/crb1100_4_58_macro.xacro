@@ -7,49 +7,38 @@
     <link name="${prefix}base_link">
       <visual name="visual">
         <geometry>
-          <mesh filename="package://abb_crb1100_support/meshes/crb1100_4_58/base_link.stl"/>
+          <mesh filename="package://abb_crb1100_support/meshes/crb1100_4_58/base_link.stl" scale="0.001 0.001 0.001"/>
         </geometry>
         <xacro:material_abb_white />
       </visual>
       <collision name="Base_Box001">
-        <pose>-0.00780786 0.000316538 0.006 0.0 0.0 0.0</pose>
+        <origin xyz="-0.00780786 0.000316538 0.006" rpy="0.0 0.0 0.0"/>
         <geometry>
-          <box>
-            <size>0.174 0.158 0.012</size>
-          </box>
+          <box size="0.174 0.158 0.012"/>
         </geometry>
       </collision>
       <collision name="Base_Cylinder001">
-        <pose>0.0 0.0 0.0728 0.0 0.0 0.0</pose>
+        <origin xyz="0.0 0.0 0.0728" rpy="0.0 0.0 0.0"/>
         <geometry>
-          <cylinder>
-            <length>0.1456</length>
-            <radius>0.0719661</radius>
-          </cylinder>
+          <cylinder length="0.1456" radius="0.0719661"/>
         </geometry>
       </collision>
       <collision name="Base_Box002">
-        <pose>-0.079843 0.0 0.0749219 1.5708 0.0 -1.5708</pose>
+        <origin xyz="-0.079843 0.0 0.0749219" rpy="1.5708 0.0 -1.5708"/>
         <geometry>
-          <box>
-            <size>0.110911 0.139336 0.0984126</size>
-          </box>
+          <box size="0.110911 0.139336 0.0984126"/>
         </geometry>
       </collision>
       <collision name="Base_Box003">
-        <pose>-0.13596 0.0 0.103253 1.5708 0.0 -1.5708</pose>
+        <origin xyz="-0.13596 0.0 0.103253" rpy="1.5708 0.0 -1.5708"/>
         <geometry>
-          <box>
-            <size>0.0964925 0.0459809 0.0285397</size>
-          </box>
+          <box size="0.0964925 0.0459809 0.0285397"/>
         </geometry>
       </collision>
       <collision name="Base_Box004">
-        <pose>-0.131965 0.0 0.045724 1.5708 0.0 -1.5708</pose>
+        <origin xyz="-0.131965 0.0 0.045724" rpy="1.5708 0.0 -1.5708"/>
         <geometry>
-          <box>
-            <size>0.0635693 0.0710773 0.0205486</size>
-          </box>
+          <box size="0.0635693 0.0710773 0.0205486"/>
         </geometry>
         <xacro:material_abb_yellow />
       </collision>
@@ -57,50 +46,40 @@
     <link name="${prefix}link_1">
       <visual>
         <geometry>
-          <mesh filename="package://abb_crb1100_support/meshes/crb1100_4_58/link_1.stl"/>
+          <mesh filename="package://abb_crb1100_support/meshes/crb1100_4_58/link_1.stl" scale="0.001 0.001 0.001"/>
         </geometry>
         <xacro:material_abb_white />
       </visual>
       <collision name="Link1_Cylinder002">
-        <pose>0.0 0.0 0.180716 0.0 0.0 0.0</pose>
+        <origin xyz="0.0 0.0 0.21216" rpy="0.0 0.0 0.0"/>
         <geometry>
-          <cylinder>
-            <length>0.0695336</length>
-            <radius>0.0880028</radius>
-          </cylinder>
+            <cylinder length="0.0695336" radius="0.0880028"/>
         </geometry>
       </collision>
       <collision name="Link1_Cylinder003">
-        <pose>-2.53022e-05 -0.000703648 0.327248 1.5708 0.0 0.0</pose>
+        <origin xyz="-2.53022e-05 -0.000703648 0.1678" rpy="1.5708 0.0 0.0"/>
         <geometry>
-          <cylinder>
-            <length>0.184809</length>
-            <radius>0.0517311</radius>
-          </cylinder>
+            <cylinder length="0.184809" radius="0.0517311"/>
         </geometry>
       </collision>
       <collision name="Link1_Box005">
-        <pose>0.00740042 -0.0015163 0.268765 0.0 -0.131547 0.0</pose>
+        <origin xyz="0.00740042 -0.0015163 0.1093" rpy="0.0 -0.131547 0.0"/>
         <geometry>
-          <box>
-            <size>0.0988751 0.182474 0.12116</size>
-          </box>
+          <box size="0.0988751 0.182474 0.12116"/>
         </geometry>
       </collision>
+      <!-- This box seems to be belonging to the next link?
       <collision name="Link1_Box006">
-        <pose>-0.0321942 -0.0015163 0.218345 0.0 -0.213012 0.0</pose>
+        <origin xyz="-0.0321942 -0.0015163 0.588" rpy="0.0 -0.213012 0.0"/>
         <geometry>
-          <box>
-            <size>0.0988751 0.178825 0.0508871</size>
-          </box>
+          <box size="0.0988751 0.178825 0.0508871"/>
         </geometry>
       </collision>
+      -->
       <collision name="Link1_Box007">
-        <pose>0.0360969 -0.00151631 0.209101 0.0 0.317913 0.0</pose>
+        <origin xyz="0.0360969 -0.00151631 0.0496" rpy="0.0 0.317913 0.0"/>
         <geometry>
-          <box>
-            <size>0.0988751 0.164519 0.0783661</size>
-          </box>
+          <box size="0.0988751 0.164519 0.0783661"/>
         </geometry>
         <xacro:material_abb_yellow />
       </collision>
@@ -108,33 +87,26 @@
     <link name="${prefix}link_2">
       <visual>
         <geometry>
-          <mesh filename="package://abb_crb1100_support/meshes/crb1100_4_58/link_2.stl"/>
+          <mesh filename="package://abb_crb1100_support/meshes/crb1100_4_58/link_2.stl" scale="0.001 0.001 0.001"/>
         </geometry>
         <xacro:material_abb_white />
       </visual>
       <collision name="Link2_Box008">
-        <pose>-0.0174075 0.0 0.423644 0.0 0.0 0.0</pose>
+        <origin xyz="-0.0174075 0.0 0.0966" rpy="0.0 0.0 0.0"/>
         <geometry>
-          <box>
-            <size>0.0667305 0.0928778 0.198962</size>
-          </box>
+          <box size="0.0667305 0.0928778 0.198962"/>
         </geometry>
       </collision>
       <collision name="Link2_Cylinder004">
-        <pose>-0.000196304 -0.000291631 0.606764 1.5708 0.0 0.0</pose>
+        <origin xyz="-0.000196304 -0.000291631 0.2798" rpy="1.5708 0.0 0.0"/>
         <geometry>
-          <cylinder>
-            <length>0.178434</length>
-            <radius>0.0465957</radius>
-          </cylinder>
+            <cylinder length="0.178434" radius="0.0465957"/>
         </geometry>
       </collision>
       <collision name="Link2_Box009">
-        <pose>-0.0103307 0.0 0.531581 0.0 0.01412 0.0</pose>
+        <origin xyz="-0.0103307 0.0 0.2046" rpy="0.0 0.01412 0.0"/>
         <geometry>
-          <box>
-            <size>0.0734036 0.176468 0.163149</size>
-          </box>
+          <box size="0.0734036 0.176468 0.163149"/>
         </geometry>
         <xacro:material_abb_yellow />
       </collision>
@@ -142,51 +114,38 @@
     <link name="${prefix}link_3">
       <visual>
         <geometry>
-          <mesh filename="package://abb_crb1100_support/meshes/crb1100_4_58/link_3.stl"/>
+          <mesh filename="package://abb_crb1100_support/meshes/crb1100_4_58/link_3.stl" scale="0.001 0.001 0.001"/>
         </geometry>
         <xacro:material_abb_white />
       </visual>
       <collision name="Link3_Cylinder005">
-        <pose>-1.58772e-05 0.0 0.617021 1.5708 0.0 -1.5708</pose>
+      <origin xyz="-1.58772e-05 0.0 0.010021" rpy="1.5708 0.0 -1.5708"/>
         <geometry>
-          <cylinder>
-            <length>0.146229</length>
-            <radius>0.0454588</radius>
-          </cylinder>
+            <cylinder length="0.146229" radius="0.0454588"/>
         </geometry>
       </collision>
       <collision name="Link3_Cylinder006">
-        <pose>0.000346811 -6.09569e-05 0.607321 1.5708 0.0 -1.19209e-07</pose>
+      <origin xyz="0.000346811 -6.09569e-05 0.000321" rpy="1.5708 0.0 -1.19209e-07"/>
         <geometry>
-          <cylinder>
-            <length>0.0954674</length>
-            <radius>0.0454588</radius>
-          </cylinder>
+            <cylinder length="0.0954674" radius="0.0454588"/>
         </geometry>
       </collision>
       <collision name="Link3_Cylinder007">
-        <pose>-1.58772e-05 0.0 0.589443 1.5708 0.0 -1.5708</pose>
+      <origin xyz="-1.58772e-05 0.0 -0.0176" rpy="1.5708 0.0 -1.5708"/>
         <geometry>
-          <cylinder>
-            <length>0.146229</length>
-            <radius>0.0454588</radius>
-          </cylinder>
+            <cylinder length="0.146229" radius="0.0454588"/>
         </geometry>
       </collision>
       <collision name="Link3_Box010">
-        <pose>-0.0169157 0.0 0.653855 0.0 0.0 0.0</pose>
+      <origin xyz="-0.0169157 0.0 0.0469" rpy="0.0 0.0 0.0"/>
         <geometry>
-          <box>
-            <size>0.018736 0.0498875 0.0203162</size>
-          </box>
+          <box size="0.018736 0.0498875 0.0203162"/>
         </geometry>
       </collision>
       <collision name="Link3_Box011">
-        <pose>-0.0289604 -0.0174093 0.565988 0.0 0.0 0.0</pose>
+      <origin xyz="-0.0289604 -0.0174093 -0.041" rpy="0.0 0.0 0.0"/>
         <geometry>
-          <box>
-            <size>0.018736 0.0498875 0.0262079</size>
-          </box>
+          <box size="0.018736 0.0498875 0.0262079"/>
         </geometry>
         <xacro:material_abb_yellow />
       </collision>
@@ -194,100 +153,84 @@
     <link name="${prefix}link_4">
       <visual>
         <geometry>
-          <mesh filename="package://abb_crb1100_support/meshes/crb1100_4_58/link_4.stl"/>
+          <mesh filename="package://abb_crb1100_support/meshes/crb1100_4_58/link_4.stl" scale="0.001 0.001 0.001"/>
         </geometry>
         <xacro:material_abb_white />
       </visual>
       <collision name="Link4_Cylinder008">
         <pose>0.15523 0.0 0.617 1.5708 0.0 1.5708</pose>
         <geometry>
-          <cylinder>
-            <length>0.163185</length>
-            <radius>0.0452081</radius>
-          </cylinder>
+            <cylinder length="0.163185" radius="0.0452081"/>
         </geometry>
       </collision>
       <collision name="Link4_Cylinder009">
         <pose>0.3 0.0 0.617 1.5708 0.0 -1.74846e-07</pose>
         <geometry>
-          <cylinder>
-            <length>0.102</length>
-            <radius>0.038</radius>
-          </cylinder>
+            <cylinder length="0.102" radius="0.038"/>
         </geometry>
       </collision>
       <collision name="Link4_Cylinder010">
         <pose>0.179 0.0 0.617 1.5708 0.0 -1.74846e-07</pose>
         <geometry>
-          <cylinder>
-            <length>0.102</length>
-            <radius>0.038</radius>
-          </cylinder>
+            <cylinder length="0.102" radius="0.038"/>
         </geometry>
       </collision>
       <collision name="Link4_Box012">
         <pose>0.239561 0.0 0.617 0.0 0.0 0.0</pose>
         <geometry>
-          <box>
-            <size>0.12 0.102032 0.076</size>
-          </box>
+          <box size="0.12 0.102032 0.076"/>
         </geometry>
       </collision>
       <collision name="Link4_Box013">
         <pose>0.154738 0.0 0.649546 0.0 -0.436332 0.0</pose>
         <geometry>
-          <box>
-            <size>0.0893911 0.0609485 0.0468981</size>
-          </box>
+          <box size="0.0893911 0.0609485 0.0468981"/>
         </geometry>
       </collision>
       <collision name="Link4_Box014">
         <pose>0.203204 0.0 0.647963 0.0 0.0 0.0</pose>
         <geometry>
-          <box>
-            <size>0.0339686 0.060339 0.0468981</size>
-          </box>
+          <box size="0.0339686 0.060339 0.0468981"/>
         </geometry>
         <xacro:material_abb_yellow />
       </collision>
     </link>
-    <link name="{prefix}link_5">
+    <!--
+    <link name="${prefix}link_5">
       <visual name="link_5">
         <geometry>
-          <mesh filename="package://abb_crb1100_support/meshes/crb1100_4_58/link_5.stl"/>
+          <mesh filename="package://abb_crb1100_support/meshes/crb1100_4_58/link_5.stl" scale="0.001 0.001 0.001"/>
         </geometry>
         <xacro:material_abb_white />
       </visual>
       <collision name="Link4_Cylinder011">
         <pose>0.324441 0.0 0.617 1.5708 0.0 -1.5708</pose>
         <geometry>
-          <cylinder>
-            <length>0.0780414</length>
-            <radius>0.0353863</radius>
-          </cylinder>
+            <cylinder length="0.0780414" radius="0.0353863"/>
         </geometry>
         <xacro:material_abb_yellow />
       </collision>
     </link>
-    <link name="{prefix}link_6">
+    <link name="${prefix}link_6">
       <visual name="link_6">
         <geometry>
-          <mesh filename="package://abb_crb1100_support/meshes/crb1100_4_58/link_6.stl"/>
+          <mesh filename="package://abb_crb1100_support/meshes/crb1100_4_58/link_6.stl" scale="0.001 0.001 0.001"/>
         </geometry>
         <xacro:material_abb_white />
       </visual>
-      <collision name="Link4_Cylinder011">
+      <collision name="Link6_Cylinder011">
         <geometry>
-          <mesh filename="package://abb_crb1100_support/meshes/crb1100_4_58/link_6.stl"/>
+          <mesh filename="package://abb_crb1100_support/meshes/crb1100_4_58/link_6.stl" scale="0.001 0.001 0.001"/>
           <xacro:material_abb_yellow />
         </geometry>
       </collision>
     </link>
+    -->
     <!-- end of link list -->
 
     <!-- joint list -->
     <joint name="${prefix}joint_1" type="revolute">
-      <origin xyz="0 0 0.0" rpy="0 0 0"/>
+      <origin xyz="0 0 0.1595" rpy="0 0 0"/>
       <parent link="${prefix}base_link"/>
       <child link="${prefix}link_1"/>
       <axis xyz="0 0 1"/>
@@ -295,18 +238,18 @@
       <dynamics damping="10.0" friction="1.0"/>
     </joint>
     <joint name="${prefix}joint_2" type="revolute">
-      <origin xyz="0.0 0 0.0" rpy="0 0 0"/>
+      <origin xyz="0.0 0.0 0.1675" rpy="0 0 0"/>
       <parent link="${prefix}link_1"/>
       <child link="${prefix}link_2"/>
-      <axis xyz="0 0 1"/>
+      <axis xyz="0 1 0"/>
       <limit lower="${radians(-115)}" upper="${radians(113)}" effort="1000" velocity="${radians(360)}"/>
       <dynamics damping="2.0" friction="1.0"/>
     </joint>
-    <joint name="${prefix}joint_3" type="prismatic">
-      <origin xyz="0.0 0 0.0" rpy="0 0 0"/>
+    <joint name="${prefix}joint_3" type="revolute">
+      <origin xyz="0.0 0 0.280" rpy="0 0 0"/>
       <parent link="${prefix}link_2"/>
       <child link="${prefix}link_3"/>
-      <axis xyz="0 0 1"/>
+      <axis xyz="0 1 0"/>
       <limit lower="${radians(-205)}" upper="${radians(55)}" effort="1000" velocity="${radians(280)}"/>
       <dynamics damping="2.0" friction="1.0"/>
     </joint>
@@ -319,24 +262,24 @@
       <limit lower="${radians(-230)}" upper="${radians(230)}" effort="1000" velocity="${radians(560)}"/>
       <dynamics damping="2.0" friction="1.0"/>
     </joint>
-    <joint name="${prefix}joint_4" type="revolute">
+    <!--
+    <joint name="${prefix}joint_5" type="revolute">
       <origin xyz="0 0 0" rpy="${radians(180)} 0 ${radians(180)}"/>
-      <parent link="${prefix}link_3"/>
-      <child link="${prefix}link_4"/>
+      <parent link="${prefix}link_4"/>
+      <child link="${prefix}link_5"/>
       <axis xyz="0 0 1"/>
-      <!-- Note: Original limits are [-400, 400] -->
-      <limit lower="${radians(-230)}" upper="${radians(230)}" effort="1000" velocity="${radians(560)}"/>
+      <limit lower="${radians(-125)}" upper="${radians(120)}" effort="1000" velocity="${radians(420)}"/>
       <dynamics damping="2.0" friction="1.0"/>
     </joint>
-    <joint name="${prefix}joint_4" type="revolute">
+    <joint name="${prefix}joint_6" type="revolute">
       <origin xyz="0 0 0" rpy="${radians(180)} 0 ${radians(180)}"/>
-      <parent link="${prefix}link_3"/>
-      <child link="${prefix}link_4"/>
+      <parent link="${prefix}link_5"/>
+      <child link="${prefix}link_6"/>
       <axis xyz="0 0 1"/>
-      <!-- Note: Original limits are [-400, 400] -->
-      <limit lower="${radians(-230)}" upper="${radians(230)}" effort="1000" velocity="${radians(560)}"/>
+      <limit lower="${radians(-400)}" upper="${radians(400)}" effort="1000" velocity="${radians(750)}"/>
       <dynamics damping="2.0" friction="1.0"/>
     </joint>
+    -->
     <!-- end of joint list -->
 
     <!-- ROS-Industrial 'base' frame: base_link to ABB World Coordinates transform -->
@@ -348,19 +291,23 @@
     </joint>
 
     <!-- ROS-Industrial 'flange' frame: attachment point for EEF models -->
+    <!--
     <link name="${prefix}flange"/>
     <joint type="fixed" name="${prefix}joint_4-flange">
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <parent link="${prefix}link_4"/>
       <child link="${prefix}flange"/>
     </joint>
+    -->
 
     <!-- ROS-Industrial 'tool0' frame: all-zeros tool frame -->
+    <!--
     <link name="${prefix}tool0" />
     <joint name="${prefix}link_4-tool0" type="fixed">
       <origin xyz="0 0 0" rpy="${radians(0)} 0 0" />
       <parent link="${prefix}flange" />
       <child link="${prefix}tool0" />
     </joint>
+    -->
   </xacro:macro>
 </robot>
