@@ -10,12 +10,4 @@
   <xacro:include filename="$(find abb_crb1100_support)/urdf/crb1100_4_58_macro.xacro"/>
   <xacro:abb_crb1100_4_58 prefix=""/>
 
-  <!-- ros2_control -->
-  <xacro:include filename="$(find abb_crb1100_support)/urdf/crb1100.ros2_control.xacro" />
-  <xacro:abb_ros2_control
-    name="ABBMultiInterfaceHardware"
-    prefix=""
-    use_fake_hardware="${use_fake_hardware}"
-    rws_ip="${rws_ip}"
-    rws_port="${rws_port}"/>
 </robot>
