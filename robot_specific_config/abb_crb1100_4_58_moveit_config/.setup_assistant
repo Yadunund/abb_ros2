@@ -1,0 +1,25 @@
+moveit_setup_assistant_config:
+  urdf:
+    package: abb_crb1100_support
+    relative_path: urdf/crb1100_4_58.xacro
+  srdf:
+    relative_path: config/abb_crb1100_4_58.srdf
+  package_settings:
+    author_name: Yadunund
+    author_email: yadunund@openrobotics.org
+    generated_timestamp: 1702882666
+  control_xacro:
+    command:
+      - position
+    state:
+      - position
+      - velocity
+  modified_urdf:
+    xacros:
+      - control_xacro
+  control_xacro:
+    command:
+      - position
+    state:
+      - position
+      - velocity
